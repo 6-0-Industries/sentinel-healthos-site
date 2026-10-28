@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sentinel HealthOS — Earth Observation Risk Intelligence for Public Health</title>
+<meta name="description" content="Sentinel HealthOS turns Earth Observation data into public-health risk intelligence and recommended actions for health and disaster-management departments in South Africa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0F17;--panel:#141B29;--alt:#1A2233;--line:#232C3D;--text:#E8ECF1;--muted:#8B96AB;--gold:#D4A017;--low:#3DDC97;--mod:#E8C547;--high:#F2994A;--crit:#E5484D}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 'IBM Plex Sans',sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif;margin:0;line-height:1.15}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:0;z-index:10;background:rgba(11,15,23,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:.3px}
+.nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:14px;color:var(--muted)}
+.nav ul a:hover{color:var(--text)}
+.btn{display:inline-block;padding:12px 22px;border-radius:6px;font-weight:600;font-size:15px;border:1px solid var(--gold);transition:transform .15s,background .15s}
+.btn-primary{background:var(--gold);color:#0B0F17}
+.btn-primary:hover{transform:translateY(-1px);background:#e3ad22}
+.btn-ghost{color:var(--text)}
+.btn-ghost:hover{background:rgba(212,160,23,.12)}
+.hero{padding:88px 0 72px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.eyebrow{font-size:12.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:18px}
+.hero h1{font-size:clamp(34px,5vw,56px);font-weight:700;margin-bottom:20px}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:560px;margin:0 0 30px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+section{padding:72px 0;border-top:1px solid var(--line)}
+.sec-head{max-width:640px;margin-bottom:40px}
+.sec-head h2{font-size:clamp(26px,3.4vw,36px);margin-bottom:12px}
+.sec-head p{color:var(--muted);margin:0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:24px}
+.card h3{font-size:18px;margin-bottom:8px}
+.card p{color:var(--muted);margin:0;font-size:15px}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-bottom:14px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+.step{position:relative;padding:22px;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:'Space Grotesk',sans-serif;color:var(--gold);font-weight:600;font-size:14px;display:block;margin-bottom:12px}
+.step h3{font-size:17px;margin-bottom:6px}
+.step p{margin:0;color:var(--muted);font-size:14.5px}
+.action{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.alert{background:var(--alt);border:1px solid var(--line);border-left:3px solid var(--crit);border-radius:8px;padding:20px}
+.alert small{color:var(--muted);font-size:12px;letter-spacing:.8px;text-transform:uppercase}
+.alert h3{font-size:18px;margin:6px 0 10px}
+.alert ul{margin:0;padding-left:18px;color:var(--muted);font-size:14.5px}
+.alert li{margin-bottom:6px}
+.bands{display:flex;gap:6px;margin-top:22px}
+.bands span{flex:1;padding:8px 6px;text-align:center;font-size:12px;font-weight:600;color:#0B0F17;border-radius:4px}
+.who{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.stage{display:flex;gap:14px;align-items:flex-start}
+.road{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.road div{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px;font-size:14px}
+.road b{display:block;font-family:'Space Grotesk',sans-serif;margin-bottom:4px;color:var(--gold)}
+.road span{color:var(--muted);font-size:13px}
+.contact{text-align:center}
+.contact .sec-head{margin:0 auto 28px}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13.5px}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+@media(max-width:900px){.hero-grid,.action{grid-template-columns:1fr}.grid3,.who{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.road{grid-template-columns:1fr 1fr}.nav ul{display:none}.hero{padding-top:56px}}
+@media(max-width:520px){.steps,.road{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a href="#top" class="logo"><svg width="26" height="26" viewBox="0 0 28 28"><polygon points="14,2 24,8 24,20 14,26 4,20 4,8" fill="none" stroke="#D4A017" stroke-width="1.8"/><circle cx="14" cy="14" r="3.2" fill="#D4A017"/></svg>SENTINEL HEALTHOS</a>
+  <ul><li><a href="#how">How it works</a></li><li><a href="#risks">What it monitors</a></li><li><a href="#action">Recommended action</a></li><li><a href="#roadmap">Roadmap</a></li></ul>
+  <a class="btn btn-primary" href="#contact">Request a demo</a>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap hero-grid">
+  <div>
+    <div class="eyebrow">Earth Observation · Climate · Public Health</div>
+    <h1>See environmental health threats before they become health emergencies.</h1>
+    <p class="lead">Sentinel HealthOS turns satellite data into risk scores for drought, flooding, heat, water stress and air quality, then tells health and disaster-management departments what action to take.</p>
+    <div class="cta"><a class="btn btn-primary" href="#contact">Request a demo</a><a class="btn btn-ghost" href="#how">See how it works</a></div>
+  </div>
+  <svg viewBox="0 0 420 360" role="img" aria-label="Hexagon risk map of South Africa's provinces coloured by risk level">
+    <g stroke="#0B0F17" stroke-width="4">
+      <g transform="translate(260,50) scale(1.1)"><polygon points="42,0 21,36.4 -21,36.4 -42,0 -21,-36.4 21,-36.4" fill="#E5484D"/></g>
+      <g transform="translate(335,112) scale(1.1)"><polygon points="42,0 21,36.4 -21,36.4 -42,0 -21,-36.4 21,-36.4" fill="#F2994A"/></g>
+      <g transform="translate(150,112) scale(1.1)"><polygon points="42,0 21,36.4 -21,36.4 -42,0 -21,-36.4 21,-36.4" fill="#F2994A"/></g>
+      <g transform="translate(243,128) scale(1.1)"><polygon points="42,0 21,36.4 -21,36.4 -42,0 -21,-36.4 21,-36.4" fill="#F2994A"/></g>
+      <g transform="translate(205,212) scale(1.1)"><polygon points="42,0 21,36.4 -21,36.4 -42,0 -21,-36.4 21,-36.4" fill="#E8C547"/></g>
+      <g transform="translate(322,212) scale(1.1)"><polygon points="42,0 21,36.4 -21,36.4 -42,0 -21,-36.4 21,-36.4" fill="#3DDC97"/></g>
+      <g transform="translate(112,246) scale(1.1)"><polygon points="42,0 21,36.4 -21,36.4 -42,0 -21,-36.4 21,-36.4" fill="#E5484D"/></g>
+      <g transform="translate(243,300) scale(1.1)"><polygon points="42,0 21,36.4 -21,36.4 -42,0 -21,-36.4 21,-36.4" fill="#F2994A"/></g>
+      <g transform="translate(112,330) scale(1.1)"><polygon points="42,0 21,36.4 -21,36.4 -42,0 -21,-36.4 21,-36.4" fill="#E8C547"/></g>
+    </g>
+  </svg>
+</div></div>
+
+<section id="how"><div class="wrap">
+  <div class="sec-head"><h2>From satellite pixels to departmental action</h2><p>One pipeline, built so that every risk score can be traced back to the data behind it.</p></div>
+  <div class="steps">
+    <div class="step"><h3>Observe</h3><p>Earth Observation indicators: vegetation, moisture, land surface temperature, flood extent and air quality.</p></div>
+    <div class="step"><h3>Combine</h3><p>Weather, population exposure, healthcare access and vulnerability layered onto each indicator.</p></div>
+    <div class="step"><h3>Score</h3><p>A transparent risk engine produces 0–100 scores by category, municipality and province.</p></div>
+    <div class="step"><h3>Recommend</h3><p>Each elevated risk is paired with a suggested public-health action for the responsible department.</p></div>
+  </div>
+</div></section>
+
+<section id="risks"><div class="wrap">
+  <div class="sec-head"><h2>Six risks, one picture</h2><p>Environmental conditions rarely act alone. Sentinel HealthOS shows how they stack up.</p></div>
+  <div class="grid3">
+    <div class="card"><span class="dot" style="background:var(--crit)"></span><h3>Heat</h3><p>Land surface temperature and heat anomalies weighted by who is exposed and how vulnerable they are.</p></div>
+    <div class="card"><span class="dot" style="background:var(--high)"></span><h3>Drought</h3><p>Vegetation stress, soil moisture and rainfall anomalies, with affected population and farmland.</p></div>
+    <div class="card"><span class="dot" style="background:var(--mod)"></span><h3>Flooding</h3><p>Flood extent and rainfall accumulation linked to the clinics and hospitals in harm's way.</p></div>
+    <div class="card"><span class="dot" style="background:var(--high)"></span><h3>Air quality</h3><p>PM2.5 and NO₂ patterns tied to respiratory and cardiovascular risk.</p></div>
+    <div class="card"><span class="dot" style="background:var(--crit)"></span><h3>Water stress</h3><p>Surface water and moisture trends that signal supply problems before they hit communities.</p></div>
+    <div class="card"><span class="dot" style="background:var(--low)"></span><h3>Disease risk</h3><p>Environmental signals combined with surveillance data, where legally and technically appropriate.</p></div>
+  </div>
+</div></section>
+
+<section id="action"><div class="wrap action">
+  <div>
+    <div class="eyebrow">Built for decisions</div>
+    <h2 style="font-size:clamp(26px,3.4vw,36px);margin-bottom:14px">A score is not a plan. Sentinel HealthOS recommends the action.</h2>
+    <p style="color:var(--muted)">Dashboards show what is happening. Sentinel HealthOS goes further, matching each risk level and category to a recommended response for the department that needs to act.</p>
+    <div class="bands"><span style="background:var(--low)">Low</span><span style="background:var(--mod)">Moderate</span><span style="background:var(--high)">High</span><span style="background:var(--crit)">Critical</span></div>
+  </div>
+  <div class="alert">
+    <small>Example recommendation · illustrative</small>
+    <h3>Heat risk: Critical</h3>
+    <ul><li>Issue heat-health advisory to affected districts</li><li>Prioritise clinic readiness for heat-related illness</li><li>Alert outdoor-worker employers and community health workers</li></ul>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head"><h2>Who it serves</h2></div>
+  <div class="who">
+    <div class="card"><h3>Health departments</h3><p>Early warning and action guidance for provincial and district health teams.</p></div>
+    <div class="card"><h3>Disaster management</h3><p>Shared situational awareness for flood, drought and heat events.</p></div>
+    <div class="card"><h3>Space and EO agencies</h3><p>A route from satellite data to measurable service delivery.</p></div>
+    <div class="card"><h3>Facilities and funders</h3><p>Facility-level exposure insight and clear reporting on impact.</p></div>
+  </div>
+</div></section>
+
+<section id="roadmap"><div class="wrap">
+  <div class="sec-head"><h2>Where we are</h2><p>Sentinel HealthOS is in early development: a working backend is live and the proof of concept is being built toward live Earth Observation feeds.</p></div>
+  <div class="road">
+    <div><b>Foundation</b><span>Backend and data model</span></div>
+    <div><b>Technology</b><span>Risk engine and dashboards</span></div>
+    <div><b>Validation</b><span>Test against real outcomes</span></div>
+    <div><b>Pilot</b><span>With health departments</span></div>
+    <div><b>Scale</b><span>Commercial rollout</span></div>
+  </div>
+</div></section>
+
+<section id="contact" class="contact"><div class="wrap">
+  <div class="sec-head"><h2>Interested in a pilot or demo?</h2><p>We are talking to health departments, disaster-management teams, funders and partners.</p></div>
+  <a class="btn btn-primary" href="mailto:nthodithato@gmail.com?subject=Sentinel%20HealthOS%20demo%20request">Get in touch</a>
+</div></section>
+</main>
+
+<footer><div class="wrap foot"><span>© 2026 6.0 Industries · Sentinel HealthOS</span><span>Built in South Africa</span></div></footer>
+</body>
+</html>
